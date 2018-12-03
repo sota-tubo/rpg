@@ -11,6 +11,8 @@ public class AttackEnemy : MonoBehaviour {
 	private MenuSwitch Switch;
 	[SerializeField]
 	private playerStatus playerstat;
+	[SerializeField]
+	private messagetext mess;
 
 	private enemyStatus enemystat;
 
@@ -39,6 +41,11 @@ public class AttackEnemy : MonoBehaviour {
 		{
 			enemy.enabled = false;
 		}
+
+		if (mess.enabled == true && Input.GetMouseButtonDown(0))
+		{
+			mess.enabled = false;
+		}
 	}
 
 	public void EnemyClicked()
@@ -46,6 +53,9 @@ public class AttackEnemy : MonoBehaviour {
 		attack = false;
 
 		enemystat.enedamage(playerstat.playerAttack);
+        
+		mess.setmessage("敵に" + playerstat.playerAttack + "ポイントのダメージを与えた！");
+		mess.enabled = true;
 
 		Switch.MS = false;
 	}

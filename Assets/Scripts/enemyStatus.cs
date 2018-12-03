@@ -37,7 +37,7 @@ public class enemyStatus : MonoBehaviour {
 	public void enedamage (int attackPoint)
 	{
 		enemyHP -= attackPoint;
-		Debug.Log(enemyHP);
+		//Debug.Log(enemyHP);
 
 		if (enemyHP <= 0)
 		{

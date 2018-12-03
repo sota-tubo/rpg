@@ -6,6 +6,8 @@ public class Attack : MonoBehaviour {
 
 	[SerializeField]
 	private AttackEnemy enemy;
+	[SerializeField]
+	private messagetext mess;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +22,10 @@ public class Attack : MonoBehaviour {
 	public void attackSelected()
 	{
 		Debug.Log("Attack");
+
+		mess.setmessage("どの敵を攻撃する？");
+		mess.enabled = true;
+
 		enemy.attack = true;
 	}
 

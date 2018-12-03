@@ -10,6 +10,8 @@ public class playerStatus : MonoBehaviour {
 	public int playerAttack = 20; //プレイヤーの攻撃力
 	[SerializeField]
 	private MenuSwitch menu;
+	[SerializeField]
+	private messagetext mess;
 
 	private Text hpText;
 
@@ -26,12 +28,19 @@ public class playerStatus : MonoBehaviour {
 
 	private void FixedUpdate()
 	{
-		
+		if (mess.enabled == true && Input.GetMouseButtonDown(0))
+		{
+			mess.enabled = false;
+            menu.MS = true;
+		}
 	}
 
 	public void damage(int damnum)
 	{
 		playerHP -= damnum;
+
+		mess.setmessage("プレイヤーは" + damnum + "ポイントのダメージを受けた！！");
+		mess.enabled = true;
 
 		if (playerHP <= 0)
         {
@@ -46,7 +55,5 @@ public class playerStatus : MonoBehaviour {
 		}
 
 		menu.playerTurn = true;
-		menu.MS = true;
 	}
-
 }

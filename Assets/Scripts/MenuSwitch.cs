@@ -7,7 +7,7 @@ public class MenuSwitch : MonoBehaviour {
 	public bool MS { get; set; } //メニューの表示非表示切り替え
 	public bool playerTurn { get; set; } //プレイヤーのターンかどうか
 	[SerializeField]
-	private GameObject attack, magic, item;
+	private GameObject menu, attack, magic, item;
 
 	// Use this for initialization
 	void Start () {
@@ -24,18 +24,19 @@ public class MenuSwitch : MonoBehaviour {
 	{
 		if (MS == true)
 		{
-			gameObject.SetActive(true);
+			menu.SetActive(true);
 			attack.SetActive(true);
 			magic.SetActive(true);
 			item.SetActive(true);
 		}
 		else if (MS == false)
 		{
-			gameObject.SetActive(false);
+			menu.SetActive(false);
 			attack.SetActive(false);
 			magic.SetActive(false);
 			item.SetActive(false);
-			playerTurn = false;
+			if (Input.GetMouseButtonDown(0))
+			    playerTurn = false;
 		}
 	}
 }
