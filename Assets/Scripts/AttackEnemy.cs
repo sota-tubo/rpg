@@ -13,11 +13,14 @@ public class AttackEnemy : MonoBehaviour {
 	private playerStatus playerstat;
 	[SerializeField]
 	private messagetext mess;
+	[SerializeField]
+	private Attack playerattack;
+	[SerializeField]
+	private Magic magic;
 
 	private enemyStatus enemystat;
 
 	private Button enemy;
-    //攻撃ボタンが押された時enemyのボタンをtrueにし、enemyが選択されたらmenuとenemyのボタンを消す
 
 	// Use this for initialization
 	void Start () {
@@ -33,31 +36,52 @@ public class AttackEnemy : MonoBehaviour {
 
 	private void FixedUpdate()
 	{
+		//こうげきが選択された時
 		if (attack == true)
 		{
 			enemy.enabled = true;
 		}
+        //こうげきの選択がキャンセルされた時もしくは攻撃した後
 		else if (attack == false)
 		{
 			enemy.enabled = false;
 		}
-
-		if (mess.enabled == true && Input.GetMouseButtonDown(0))
+        //右クリックした時
+		if (Input.GetMouseButtonDown(1))
 		{
-			mess.enabled = false;
+			mess.message.enabled = false;
 		}
 	}
-
+    //攻撃時に敵をクリックした時
 	public void EnemyClicked()
 	{
-		attack = false;
+		//たたかうを選択した時
+		if (playerattack.attackselect == true)
+		{
+			attack = false;
 
-		enemystat.enedamage(playerstat.playerAttack);
+            enemystat.enedamage(playerstat.playerAttack);
+
+            mess.setmessage("敵に" + playerstat.playerAttack + "ポイントのダメージを与えた！");
+			mess.message.enabled = true;
+
+			playerattack.attackselect = false;
+            Switch.MS = false;
+		}
+		//まほう(攻撃魔法)を選択した時
+		else if (magic.magicselect == true)
+		{
+			attack = false;
+
+			enemystat.enedamage(playerstat.magicAttack);
+
+			mess.setmessage("敵に" + playerstat.magicAttack + "ポイントのダメージを与えた！");
+			mess.message.enabled = true;
+
+			magic.magicselect = false;
+            Switch.MS = false;
+		}
         
-		mess.setmessage("敵に" + playerstat.playerAttack + "ポイントのダメージを与えた！");
-		mess.enabled = true;
-
-		Switch.MS = false;
 	}
 
 }

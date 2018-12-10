@@ -28,12 +28,13 @@ public class enemyStatus : MonoBehaviour {
 
 	private void FixedUpdate()
 	{
+		//敵のターンになった時
 		if (menu.playerTurn == false)
 		{
 			playerStatus.damage(eneAttack);
 		}
 	}
-
+    //敵のダメージ処理
 	public void enedamage (int attackPoint)
 	{
 		enemyHP -= attackPoint;
