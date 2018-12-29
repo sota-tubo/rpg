@@ -12,6 +12,8 @@ public class Healing : MonoBehaviour {
 	private Magic magic;
 	[SerializeField]
 	private MenuSwitch menu;
+	[SerializeField]
+	private messagetext mess;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +28,11 @@ public class Healing : MonoBehaviour {
 	public void clickHeal()
 	{
 		at.attack = false;
+        
+        //敵も回復できるようにする
+
+		//mess.setmessage("誰を回復する？");
+		//mess.message.enabled = true;
 
 		player.heal(player.magicHeal);
 

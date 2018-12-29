@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class messagetext : MonoBehaviour {
 
-	public Text message { get; set; }
+	public Text message { get; set; } //メッセージテキスト
 
 	// Use this for initialization
 	void Start () {
