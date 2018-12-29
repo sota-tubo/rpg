@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class Magic : MonoBehaviour {
 
 	[SerializeField]
-	private GameObject magicFrame;
+	private GameObject magicFrame; //まほうの種類を選択する時の枠
 	public bool magicselect { get; set; } //魔法を選択したかどうか
+
 	[SerializeField]
 	private Attack attack;
 

@@ -7,9 +7,11 @@ public class MenuSwitch : MonoBehaviour {
 	public bool MS { get; set; } //メニューの表示非表示切り替え
 	public bool playerTurn { get; set; } //プレイヤーのターンかどうか
 	[SerializeField]
-	private GameObject menu, attack, magic, item;
+	private GameObject menu, attack, magic, item; //メニュー関連全般
 	[SerializeField]
-	private GameObject magitem; //魔法・アイテムの種類を表示させる枠
+	private GameObject magframe, itemframe; //魔法・アイテムの種類を表示させる枠
+	[SerializeField]
+	private enemyStatus enemy;
 
 	// Use this for initialization
 	void Start () {
@@ -30,7 +32,7 @@ public class MenuSwitch : MonoBehaviour {
 			menu.SetActive(true);
 			attack.SetActive(true);
 			magic.SetActive(true);
-			//item.SetActive(true);
+			item.SetActive(true);
 		}
         //メニュー非表示
 		else if (MS == false)
@@ -40,10 +42,12 @@ public class MenuSwitch : MonoBehaviour {
 			magic.SetActive(false);
 			item.SetActive(false);
             //まほうとアイテムの選択枠を消す
-			magitem.SetActive(false);
+			magframe.SetActive(false);
+			itemframe.SetActive(false);
             //メニュー非表示時に左クリックで敵ターンになる
 			if (Input.GetMouseButtonDown(0))
 			    playerTurn = false;
 		}
+
 	}
 }

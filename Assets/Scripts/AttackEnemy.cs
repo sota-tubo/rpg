@@ -6,9 +6,7 @@ using UnityEngine.UI;
 public class AttackEnemy : MonoBehaviour {
 
 	public bool attack { get; set; } //攻撃が選択された時
-
-	[SerializeField]
-	private MenuSwitch Switch;
+    
 	[SerializeField]
 	private playerStatus playerstat;
 	[SerializeField]
@@ -61,12 +59,6 @@ public class AttackEnemy : MonoBehaviour {
 			attack = false;
 
             enemystat.enedamage(playerstat.playerAttack);
-
-            mess.setmessage("敵に" + playerstat.playerAttack + "ポイントのダメージを与えた！");
-			mess.message.enabled = true;
-
-			playerattack.attackselect = false;
-            Switch.MS = false;
 		}
 		//まほう(攻撃魔法)を選択した時
 		else if (magic.magicselect == true)
@@ -74,14 +66,14 @@ public class AttackEnemy : MonoBehaviour {
 			attack = false;
 
 			enemystat.enedamage(playerstat.magicAttack);
-
-			mess.setmessage("敵に" + playerstat.magicAttack + "ポイントのダメージを与えた！");
-			mess.message.enabled = true;
-
-			magic.magicselect = false;
-            Switch.MS = false;
 		}
-        
+		//まほう(回復魔法)を選択した時
+		else if (playerattack.heal == true)
+		{
+			attack = false;
+
+			enemystat.enedamage(-playerstat.magicHeal);
+		}
 	}
 
 }

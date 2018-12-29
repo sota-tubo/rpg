@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Item : MonoBehaviour {
 	
 	[SerializeField]
-    private GameObject itemFrame;
+    private GameObject itemFrame; //アイテムの種類を選択する時の枠
     public bool itemselect { get; set; } //アイテムを選択したかどうか
     [SerializeField]
     private Attack attack;
