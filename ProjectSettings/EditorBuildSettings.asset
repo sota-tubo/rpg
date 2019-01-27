@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Title.unity
     guid: a664380cf02614becbacd932f966fee8
   - enabled: 1
+    path: Assets/Scenes/JobSelect.unity
+    guid: 171f18c4be26a4018aca9e53153e244b
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
