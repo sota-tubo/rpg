@@ -57,23 +57,22 @@ public class AttackEnemy : MonoBehaviour {
 		if (playerattack.attackselect == true)
 		{
 			attack = false;
-
-            enemystat.enedamage(playerstat.playerAttack);
+            
+			enemystat.enedamage(playerstat.playerAttack);
 		}
 		//まほう(攻撃魔法)を選択した時
 		else if (magic.magicselect == true)
 		{
 			attack = false;
-
+            
 			enemystat.enedamage(playerstat.magicAttack);
 		}
 		//まほう(回復魔法)を選択した時
 		else if (playerattack.heal == true)
 		{
 			attack = false;
-
+            
 			enemystat.enedamage(-playerstat.magicHeal);
 		}
 	}
-
 }
