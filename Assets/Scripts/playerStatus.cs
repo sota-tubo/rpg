@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class playerStatus : MonoBehaviour {
 
 	public int playerHP = 100; //プレイヤーの体力
+	public int playerMAXHP { get; set; } //プレイヤーの最大体力
 	public int playerAttack = 20; //プレイヤーの攻撃力
 	public int magicAttack = 20; //プレイヤーの魔法攻撃力
 	public int magicHeal = 40; //プレイヤーの魔法回復力
@@ -14,7 +15,7 @@ public class playerStatus : MonoBehaviour {
 	private MenuSwitch menu;
 	[SerializeField]
 	private messagetext mess;
-
+    
 	private Text hpText;
 	private damageEffect effect;
 
@@ -72,9 +73,9 @@ public class playerStatus : MonoBehaviour {
 		Debug.Log("healing");
 		playerHP += healnum;
 
-		if (playerHP >= 100)
+		if (playerHP >= playerMAXHP)
 		{
-			playerHP = 100;
+			playerHP = playerMAXHP;
 		}
 
 		hpText.text = playerHP.ToString();

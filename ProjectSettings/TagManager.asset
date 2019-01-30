@@ -41,3 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: magicInfo
+    uniqueID: 4071296499
+    locked: 0
