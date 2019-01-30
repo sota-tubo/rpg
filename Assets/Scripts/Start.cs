@@ -12,6 +12,6 @@ public class Start : MonoBehaviour {
 
 	public void OnClicked()
 	{
-		SceneManager.LoadScene("SampleScene");
+		SceneManager.LoadScene("JobSelect");
 	}
 }

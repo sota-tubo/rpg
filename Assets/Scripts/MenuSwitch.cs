@@ -30,17 +30,15 @@ public class MenuSwitch : MonoBehaviour {
 		if (MS == true)
 		{
 			menu.SetActive(true);
-			attack.SetActive(true);
-			magic.SetActive(true);
 			item.SetActive(true);
+			visMenu();
 		}
         //メニュー非表示
 		else if (MS == false)
 		{
 			menu.SetActive(false);
-			attack.SetActive(false);
-			magic.SetActive(false);
 			item.SetActive(false);
+			invisMenu();
             //まほうとアイテムの選択枠を消す
 			magframe.SetActive(false);
 			itemframe.SetActive(false);
@@ -49,5 +47,45 @@ public class MenuSwitch : MonoBehaviour {
 			    playerTurn = false;
 		}
 
+	}
+
+	private void visMenu()
+	{
+		//戦士or魔法使いor闇の戦士or伝説の勇者の場合
+		if (selectJob.Sol || selectJob.Wiz || selectJob.Dar || selectJob.Yuu)
+		{
+            attack.SetActive(true);
+            magic.SetActive(true);
+		}
+		//騎士or狂戦士の場合
+		else if (selectJob.Kni || selectJob.Ber)
+		{
+			attack.SetActive(true);
+		}
+		//賢者の場合
+		else if (selectJob.Sag)
+		{
+			magic.SetActive(true);
+		}
+	}
+
+	private void invisMenu()
+	{
+		//戦士or魔法使いor闇の戦士or伝説の勇者の場合
+        if (selectJob.Sol || selectJob.Wiz || selectJob.Dar || selectJob.Yuu)
+        {
+			attack.SetActive(false);
+			magic.SetActive(false);
+        }
+        //騎士or狂戦士の場合
+        else if (selectJob.Kni || selectJob.Ber)
+        {
+			attack.SetActive(false);
+        }
+        //賢者の場合
+        else if (selectJob.Sag)
+        {
+			magic.SetActive(false);
+        }
 	}
 }
