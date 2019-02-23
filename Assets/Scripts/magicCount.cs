@@ -9,11 +9,13 @@ public class magicCount : MonoBehaviour {
 	public int count { get;  set;}
 
 	private Text counttext;
+	private AttackEnemy attack;
 
 	// Use this for initialization
 	void Start () {
 		count = 10;
 		counttext = GetComponent<Text>();
+		attack = GameObject.FindWithTag("Enemy").GetComponent<AttackEnemy>();
 	}
 	
 	// Update is called once per frame
@@ -24,5 +26,10 @@ public class magicCount : MonoBehaviour {
 	private void FixedUpdate()
 	{
 		counttext.text = count.ToString();
+	}
+
+	public void Getmagickind()
+	{
+		//attack.magiccount = GetComponent<magicCount>();
 	}
 }

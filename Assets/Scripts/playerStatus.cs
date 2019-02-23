@@ -17,11 +17,13 @@ public class playerStatus : MonoBehaviour {
 	private messagetext mess;
     
 	private Text hpText;
+	private damageEffect effect;
 
 	// Use this for initialization
 	void Start () {
 		hpText = GetComponent<Text>();
 		hpText.text = playerHP.ToString();
+		effect = GameObject.Find("playerEffect").GetComponent<damageEffect>();
 	}
 	
 	// Update is called once per frame
@@ -59,6 +61,8 @@ public class playerStatus : MonoBehaviour {
 
 		mess.setmessage("プレイヤーは" + damnum + "ポイントのダメージを受けた！！");
 		mess.message.enabled = true;
+
+		effect.playereffect();
 
 		menu.playerTurn = true;
 		menu.MS = true;

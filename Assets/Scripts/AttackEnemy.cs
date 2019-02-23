@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class AttackEnemy : MonoBehaviour {
 
 	public bool attack { get; set; } //攻撃が選択された時
+	//public magicCount magiccount { get; set; } //どの魔法が使われたのかをチェック
+	public string magickind; //使う魔法の種類
     
 	[SerializeField]
 	private playerStatus playerstat;
@@ -57,23 +59,26 @@ public class AttackEnemy : MonoBehaviour {
 		if (playerattack.attackselect == true)
 		{
 			attack = false;
-
-            enemystat.enedamage(playerstat.playerAttack);
+            
+			enemystat.enedamage(playerstat.playerAttack, magickind);
 		}
 		//まほう(攻撃魔法)を選択した時
 		else if (magic.magicselect == true)
 		{
 			attack = false;
 
-			enemystat.enedamage(playerstat.magicAttack);
+			//magiccount.count--;
+            
+			enemystat.enedamage(playerstat.magicAttack, magickind);
 		}
 		//まほう(回復魔法)を選択した時
 		else if (playerattack.heal == true)
 		{
 			attack = false;
 
-			enemystat.enedamage(-playerstat.magicHeal);
+			//magiccount.count--;
+            
+			enemystat.enedamage(-playerstat.magicHeal, magickind);
 		}
 	}
-
 }

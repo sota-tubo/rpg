@@ -8,30 +8,30 @@ public class enemyStatus : MonoBehaviour {
 
 	public int enemyHP = 50; //敵のHP
 	public int eneAttack = 10; //敵の攻撃力
-
-	[SerializeField]
-	private string scenestr = "GameClear"; //敵を倒した時の遷移先のシーン名
-	[SerializeField]
-	private Sprite jii, jiismile, yuusya, myst, dark; //敵の絵の変更
-	[SerializeField]
-	private Sprite backjii, backmyst; //背景の変更
-
-	[SerializeField]
-	private MenuSwitch menu;
-	[SerializeField]
-	private playerStatus playerStatus;
-	[SerializeField]
-	private Magic magic;
-	[SerializeField]
-	private messagetext mess;
+    
+	public string scenestr = "GameClear"; //敵を倒した時の遷移先のシーン名
+	public Sprite jii, jiismile, yuusya, myst, dark; //敵の絵の変更
+	public Sprite backjii, backmyst; //背景の変更
+    
+	public MenuSwitch menu { get; private set; }
+	private playerStatus playerstatus;
+	public Magic magic;
+	public messagetext mess { get; private set; }
 	[SerializeField]
 	private Attack playerattack;
+	private enemyDamageEffect DamageEffect;
 
-	private FadeScript Fade;
+	public FadeScript Fade { get; private set; }
 	private GameObject background;
 
 	// Use this for initialization
 	void Start () {
+		menu = GameObject.Find("GameSystem").GetComponent<MenuSwitch>();
+		playerstatus = GameObject.Find("PlayerHP").GetComponent<playerStatus>();
+		mess = GameObject.Find("messageText").GetComponent<messagetext>();
+		DamageEffect = GetComponent<enemyDamageEffect>();
+
+
 		Fade = GameObject.Find("FadeSystem").GetComponent<FadeScript>();
 		background = GameObject.Find("background");
 	}
@@ -46,86 +46,32 @@ public class enemyStatus : MonoBehaviour {
 		//敵のターンになった時
 		if (menu.playerTurn == false)
 		{
-			playerStatus.damage(eneAttack);
+			playerstatus.damage(eneAttack);
 		}
 	}
     //敵のダメージ処理
-	public void enedamage (int attackPoint)
+	public void enedamage (int attackpoint, string magictag)
 	{
-		if (gameObject.name == "gorotuki")
+		DamageEffect.effectOn();
+
+		if (GetComponent<gorotuki>() != null)
 		{
-			enemyHP -= attackPoint;
-			if (attackPoint >= 0)
-			{
-				mess.setmessage("敵に" + attackPoint + "ポイントのダメージを与えた！");
-                mess.message.enabled = true;
-			}
-			else
-			{
-				mess.setmessage("敵は" + -attackPoint + "ポイントのダメージを回復した！");
-                mess.message.enabled = true;
-			}
+			GetComponent<gorotuki>().damage(attackpoint);
 		}
-		else if (gameObject.name == "jii")
-		{
-			if (attackPoint <= 0f)
-			{
-				GetComponent<Image>().sprite = jiismile;
-				enemyHP -= enemyHP;
-			}
-			else
-			{
-				mess.setmessage("危ないっ！");
-				mess.message.enabled = true;
+		else if (GetComponent<jii>() != null)
+        {
+            GetComponent<jii>().damage(attackpoint);
+        }
+		else if (GetComponent<myst>() != null)
+        {
+			GetComponent<myst>().damage(attackpoint, magictag);
+        }
+		else if (GetComponent<dark>() != null)
+        {
+			GetComponent<dark>().damage(attackpoint, magictag);
+        }
 
-				Fade.fade();
-				GetComponent<Image>().sprite = yuusya;
-
-				enemyHP = 1000;
-				eneAttack = 10000;
-			}
-		}
-		else if (gameObject.name == "myst")
-		{
-			enemyHP -= attackPoint;
-
-			if (attackPoint >= 0)
-            {
-                mess.setmessage("敵に" + attackPoint + "ポイントのダメージを与えた！");
-                mess.message.enabled = true;
-            }
-            else
-            {
-                mess.setmessage("敵は" + -attackPoint + "ポイントのダメージを回復した！");
-                mess.message.enabled = true;
-            }
-		}
-		else if (gameObject.name == "dark")
-		{
-			if (magic.magicselect == true)
-			{
-				enemyHP -= (int)(attackPoint / 2);
-
-				mess.setmessage("敵に" + (int)(attackPoint / 2) + "ポイントのダメージを与えた！");
-                mess.message.enabled = true;
-			}
-			else
-			{
-				enemyHP -= attackPoint;
-
-				if (attackPoint >= 0)
-                {
-                    mess.setmessage("敵に" + attackPoint + "ポイントのダメージを与えた！");
-                    mess.message.enabled = true;
-                }
-                else
-                {
-                    mess.setmessage("敵は" + -attackPoint + "ポイントのダメージを回復した！");
-                    mess.message.enabled = true;
-                }
-			}
-		}
-		//Debug.Log(enemyHP);
+		Debug.Log(enemyHP);
 
 		if (enemyHP <= 0)
 		{
@@ -137,7 +83,15 @@ public class enemyStatus : MonoBehaviour {
 			magic.magicselect = false;
 
 			Fade.fade();
-            ChangeEnemy();
+
+			if (GetComponent<Image>().sprite == jiismile)
+			{
+				StartCoroutine("smilespan");
+			}
+			else
+			{
+				ChangeEnemy();
+			}
 
 			mess.message.enabled = false;
 		}
@@ -154,26 +108,35 @@ public class enemyStatus : MonoBehaviour {
 		//敵切り替え時に自ターンにならずダメージを受けてしまう
 		if (gameObject.name == "gorotuki")
 		{
+			Destroy(GetComponent<gorotuki>());
+
 			GetComponent<Image>().sprite = jii;
 			background.GetComponent<Image>().sprite = backjii;
 			gameObject.name = "jii";
+			gameObject.AddComponent<jii>();
 
 			enemyHP = 50;
-            eneAttack = 10;
+            eneAttack = 0;
 		}
 		else if (gameObject.name == "jii")
 		{
+			Destroy(GetComponent<jii>());
+
 			GetComponent<Image>().sprite = myst;
 			background.GetComponent<Image>().sprite = backmyst;
             gameObject.name = "myst";
+			gameObject.AddComponent<myst>();
 
 			enemyHP = 80;
             eneAttack = 20;
 		}
 		else if (gameObject.name == "myst")
 		{
+			Destroy(GetComponent<myst>());
+
 			GetComponent<Image>().sprite = dark;
             gameObject.name = "dark";
+			gameObject.AddComponent<dark>();
 
 			enemyHP = 100;
             eneAttack = 30;
@@ -185,5 +148,17 @@ public class enemyStatus : MonoBehaviour {
 
 		//menu.MS = true;
 		//menu.playerTurn = true;
+	}
+
+	IEnumerator smilespan()
+	{
+		GameObject.Find("magicframe").SetActive(false);
+
+		yield return new WaitForSeconds(1.0f);
+
+		mess.message.enabled = false;
+
+		Fade.fade();
+		ChangeEnemy();
 	}
 }
