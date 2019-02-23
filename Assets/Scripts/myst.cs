@@ -11,19 +11,30 @@ public class myst : MonoBehaviour {
 		eneStatus = GetComponent<enemyStatus>();
 	}
 
-	public void damage(int damagepoint)
+	public void damage(int damagepoint, string magictag)
     {
-		eneStatus.enemyHP -= damagepoint;
-        if (damagepoint >= 0)
-        {
-			eneStatus.mess.setmessage("敵に" + damagepoint + "ポイントのダメージを与えた！");
-			eneStatus.mess.message.enabled = true;
-        }
-        else
-        {
-			eneStatus.mess.setmessage("敵は" + damagepoint + "ポイントのダメージを回復した！");
-			eneStatus.mess.message.enabled = true;
-        }
+		if (magictag == "Thunder")
+		{
+			eneStatus.enemyHP -= damagepoint * 2;
+
+			eneStatus.mess.setmessage("敵に" + (damagepoint * 2) + "ポイントのダメージを与えた！");
+            eneStatus.mess.message.enabled = true;
+		}
+		else
+		{
+			eneStatus.enemyHP -= damagepoint;
+
+			if (damagepoint >= 0)
+            {
+                eneStatus.mess.setmessage("敵に" + damagepoint + "ポイントのダメージを与えた！");
+                eneStatus.mess.message.enabled = true;
+            }
+            else
+            {
+                eneStatus.mess.setmessage("敵は" + damagepoint + "ポイントのダメージを回復した！");
+                eneStatus.mess.message.enabled = true;
+            }
+		}
     }
  
 }

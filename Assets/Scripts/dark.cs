@@ -11,14 +11,29 @@ public class dark : MonoBehaviour {
 		eneStatus = GetComponent<enemyStatus>();
 	}
 
-	public void damage(int damagepoint)
+	public void damage(int damagepoint, string magictag)
     {
-		if (eneStatus.magic.magicselect == true)
+		if (magictag == "Fire")
+		{
+			eneStatus.enemyHP -= damagepoint * 2;
+
+			eneStatus.mess.setmessage("敵に" + (damagepoint * 2) + "ポイントのダメージを与えた！");
+            eneStatus.mess.message.enabled = true;
+		}
+		else if (magictag != "Attack")
         {
 			eneStatus.enemyHP -= (int)(damagepoint / 2);
 
-			eneStatus.mess.setmessage("敵に" + (int)(damagepoint / 2) + "ポイントのダメージを与えた！");
-			eneStatus.mess.message.enabled = true;
+			if (damagepoint >= 0)
+            {
+				eneStatus.mess.setmessage("敵に" + (int)(damagepoint / 2) + "ポイントのダメージを与えた！");
+                eneStatus.mess.message.enabled = true;
+            }
+            else
+            {
+				eneStatus.mess.setmessage("敵は" + (int)(-damagepoint / 2) + "ポイントのダメージを回復した！");
+                eneStatus.mess.message.enabled = true;
+            }
         }
         else
         {

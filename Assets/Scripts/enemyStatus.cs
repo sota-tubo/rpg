@@ -15,8 +15,9 @@ public class enemyStatus : MonoBehaviour {
     
 	public MenuSwitch menu { get; private set; }
 	private playerStatus playerstatus;
-	public Magic magic { get; private set; }
+	public Magic magic;
 	public messagetext mess { get; private set; }
+	[SerializeField]
 	private Attack playerattack;
 	private enemyDamageEffect DamageEffect;
 
@@ -27,9 +28,7 @@ public class enemyStatus : MonoBehaviour {
 	void Start () {
 		menu = GameObject.Find("GameSystem").GetComponent<MenuSwitch>();
 		playerstatus = GameObject.Find("PlayerHP").GetComponent<playerStatus>();
-		magic = GameObject.Find("Magic").GetComponent<Magic>();
 		mess = GameObject.Find("messageText").GetComponent<messagetext>();
-		playerattack = GameObject.Find("Attack").GetComponent<Attack>();
 		DamageEffect = GetComponent<enemyDamageEffect>();
 
 
@@ -51,7 +50,7 @@ public class enemyStatus : MonoBehaviour {
 		}
 	}
     //敵のダメージ処理
-	public void enedamage (int attackpoint)
+	public void enedamage (int attackpoint, string magictag)
 	{
 		DamageEffect.effectOn();
 
@@ -65,11 +64,11 @@ public class enemyStatus : MonoBehaviour {
         }
 		else if (GetComponent<myst>() != null)
         {
-            GetComponent<myst>().damage(attackpoint);
+			GetComponent<myst>().damage(attackpoint, magictag);
         }
 		else if (GetComponent<dark>() != null)
         {
-            GetComponent<dark>().damage(attackpoint);
+			GetComponent<dark>().damage(attackpoint, magictag);
         }
 
 		Debug.Log(enemyHP);
