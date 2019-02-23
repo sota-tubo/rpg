@@ -1,1 +1,1 @@
-rpgMac.appがMac用でrpgWinフォルダ内のrpg.exeがWindows10用です
+
