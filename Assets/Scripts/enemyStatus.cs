@@ -139,7 +139,7 @@ public class enemyStatus : MonoBehaviour {
 			gameObject.AddComponent<dark>();
 
 			enemyHP = 100;
-            eneAttack = 30;
+            eneAttack = 25;
 		}
 		else
 		{

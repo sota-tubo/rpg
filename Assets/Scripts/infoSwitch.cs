@@ -8,7 +8,7 @@ public class infoSwitch : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		infoCanvas = transform.FindChild("infoCanvas").gameObject;
+		infoCanvas = transform.Find("infoCanvas").gameObject;
 	}
 	
 	// Update is called once per frame
