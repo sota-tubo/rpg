@@ -1410,6 +1410,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highmagic: {fileID: 1138223555}
+  Heal: {fileID: 1434486706}
+  HiHeal: {fileID: 1310269260}
 --- !u!1 &641608479
 GameObject:
   m_ObjectHideFlags: 0
@@ -3001,7 +3003,7 @@ GameObject:
   - component: {fileID: 1310269263}
   - component: {fileID: 1310269262}
   m_Layer: 5
-  m_Name: daikaihuku
+  m_Name: HiHeal
   m_TagString: High_Heal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
