@@ -68,7 +68,7 @@ public class AttackEnemy : MonoBehaviour {
 			attack = false;
 
 			//magiccount.count--;
-            
+
 			enemystat.enedamage(playerstat.magicAttack, magickind);
 		}
 		//まほう(回復魔法)を選択した時

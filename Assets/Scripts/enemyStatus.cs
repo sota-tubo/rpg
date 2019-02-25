@@ -53,25 +53,26 @@ public class enemyStatus : MonoBehaviour {
 	public void enedamage (int attackpoint, string magictag)
 	{
 		DamageEffect.effectOn();
+        
+		if (magictag.Contains("High") == true)
+			attackpoint *= 2;
 
 		if (GetComponent<gorotuki>() != null)
 		{
 			GetComponent<gorotuki>().damage(attackpoint);
 		}
 		else if (GetComponent<jii>() != null)
-        {
-            GetComponent<jii>().damage(attackpoint);
-        }
+		{
+			GetComponent<jii>().damage(attackpoint);
+		}
 		else if (GetComponent<myst>() != null)
-        {
+		{
 			GetComponent<myst>().damage(attackpoint, magictag);
-        }
+		}
 		else if (GetComponent<dark>() != null)
-        {
+		{
 			GetComponent<dark>().damage(attackpoint, magictag);
-        }
-
-		Debug.Log(enemyHP);
+		}
 
 		if (enemyHP <= 0)
 		{
