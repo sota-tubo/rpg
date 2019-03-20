@@ -12,11 +12,19 @@ public class MenuSwitch : MonoBehaviour {
 	private GameObject magframe, itemframe; //魔法・アイテムの種類を表示させる枠
 	[SerializeField]
 	private enemyStatus enemy;
+	[SerializeField]
+	private GameObject HighMagic; //上位魔法が格納されているオブジェクト
 
 	// Use this for initialization
 	void Start () {
 		MS = true;
 		playerTurn = true;
+        
+        //賢者or闇の剣士or伝説の勇者の場合上位魔法を表示
+		if (selectJob.Sag || selectJob.Dar || selectJob.Yuu)
+		{
+			HighMagic.SetActive(true);
+		}
 	}
 	
 	// Update is called once per frame

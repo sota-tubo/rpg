@@ -46,14 +46,14 @@ public class jobStatus : MonoBehaviour {
 		else if (selectJob.Wiz)
 		{
 			status.playerAttack -= 10;
-			status.magicAttack += 20;
+			status.magicAttack += 10;
 			status.magicHeal += 10;
 		}
 		//賢者を選んだ場合
 		else if (selectJob.Sag)
 		{
 			status.playerHP -= 30;
-			status.magicAttack += 20;
+			status.magicAttack += 10;
 			status.magicHeal += 10;
 		}
 		//闇の戦士を選んだ場合
@@ -61,7 +61,7 @@ public class jobStatus : MonoBehaviour {
 		{
 			status.playerHP += 30;
 			status.playerAttack += 10;
-			status.magicAttack += 20;
+			status.magicAttack += 10;
 			status.magicHeal = 0;
 		}
 		//伝説の勇者を選んだ場合

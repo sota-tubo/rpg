@@ -54,13 +54,22 @@ public class Attack : MonoBehaviour {
 		enemy.attack = true;
 	}
 
+    //攻撃魔法を選択時
+	public void magicattackSelected()
+	{
+		mess.setmessage("どの敵を攻撃する？");
+        mess.message.enabled = true;
+
+        enemy.attack = true;
+	}
+
     //回復選択時
 	public void magicSelected()
 	{
 		heal = true;
 		magic.magicselect = false;
 
-		mess.setmessage("どの敵を回復する？");
+		mess.setmessage("誰を回復する？");
 		mess.message.enabled = true;
 
 		playerButton.SetActive(true);
@@ -68,4 +77,12 @@ public class Attack : MonoBehaviour {
 		enemy.attack = true;
 	}
 
+	//アイテム(お金を選択時)
+	public void moneySelected()
+	{
+		mess.setmessage("どの敵にお金をあげる？");
+		mess.message.enabled = true;
+
+		enemy.attack = true;
+	}
 }

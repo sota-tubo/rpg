@@ -15,10 +15,20 @@ public class myst : MonoBehaviour {
     {
 		if (magictag == "Thunder")
 		{
-			eneStatus.enemyHP -= damagepoint * 2;
+			if (magictag.Contains("High"))
+			{
+				eneStatus.enemyHP -= damagepoint * 3;
 
-			eneStatus.mess.setmessage("敵に" + (damagepoint * 2) + "ポイントのダメージを与えた！");
-            eneStatus.mess.message.enabled = true;
+				eneStatus.mess.setmessage("敵に" + (damagepoint * 3) + "ポイントのダメージを与えた！");
+                eneStatus.mess.message.enabled = true;
+			}
+			else
+			{
+				eneStatus.enemyHP -= damagepoint * 2;
+
+				eneStatus.mess.setmessage("敵に" + (damagepoint * 2) + "ポイントのダメージを与えた！");
+                eneStatus.mess.message.enabled = true;
+			}
 		}
 		else
 		{
@@ -35,6 +45,8 @@ public class myst : MonoBehaviour {
                 eneStatus.mess.message.enabled = true;
             }
 		}
+		//最大タメ時の炎属性の攻撃で一撃で倒すことができる(魔法が使えない場合は炎属性の魔法の石とタメを選んで攻撃したとき)
+
     }
  
 }

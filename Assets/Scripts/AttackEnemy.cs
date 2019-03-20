@@ -7,7 +7,7 @@ public class AttackEnemy : MonoBehaviour {
 
 	public bool attack { get; set; } //攻撃が選択された時
 	//public magicCount magiccount { get; set; } //どの魔法が使われたのかをチェック
-	public string magickind; //使う魔法の種類
+	public string magickind { get; set; } //使う魔法・アイテムの種類
     
 	[SerializeField]
 	private playerStatus playerstat;
@@ -18,15 +18,17 @@ public class AttackEnemy : MonoBehaviour {
 	[SerializeField]
 	private Magic magic;
 
-	private enemyStatus enemystat;
+	private enemyStatus enemyStatus;
+	private magicEffect magiceffect;
 
 	private Button enemy;
 
 	// Use this for initialization
 	void Start () {
 		attack = false;
-		enemystat = GetComponent<enemyStatus>();
+		enemyStatus = GetComponent<enemyStatus>();
 		enemy = GetComponent<Button>();
+		magiceffect = GetComponent<magicEffect>();
 	}
 	
 	// Update is called once per frame
@@ -52,15 +54,16 @@ public class AttackEnemy : MonoBehaviour {
 			mess.message.enabled = false;
 		}
 	}
-    //攻撃時に敵をクリックした時
+    //攻撃時に敵をクリックした時。選択した敵にダメージ処理を行う
 	public void EnemyClicked()
 	{
 		//たたかうを選択した時
 		if (playerattack.attackselect == true)
 		{
 			attack = false;
-            
-			enemystat.enedamage(playerstat.playerAttack, magickind);
+
+			Debug.Log("Attack");
+			enemyStatus.enedamage(playerstat.playerAttack, magickind);
 		}
 		//まほう(攻撃魔法)を選択した時
 		else if (magic.magicselect == true)
@@ -68,8 +71,10 @@ public class AttackEnemy : MonoBehaviour {
 			attack = false;
 
 			//magiccount.count--;
-            
-			enemystat.enedamage(playerstat.magicAttack, magickind);
+
+			Debug.Log(magickind);
+			magiceffect.changeEffect(magickind);
+			enemyStatus.enedamage(playerstat.magicAttack, magickind);
 		}
 		//まほう(回復魔法)を選択した時
 		else if (playerattack.heal == true)
@@ -77,8 +82,22 @@ public class AttackEnemy : MonoBehaviour {
 			attack = false;
 
 			//magiccount.count--;
-            
-			enemystat.enedamage(-playerstat.magicHeal, magickind);
+			Debug.Log(magickind);
+			enemyStatus.enedamage(-playerstat.magicHeal, magickind);
 		}
+		//アイテム(お金を選択した場合)
+		else if (magickind == "Money")
+		{
+			if (GetComponent<gorotuki>())
+			{
+				enemyStatus.enedamage(50, magickind); //ごろつきの体力は50なので、
+			}
+			else
+			{
+				mess.setmessage("敵は興味がないようだ...");
+				mess.message.enabled = true;
+			}
+		}
+
 	}
 }

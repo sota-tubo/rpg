@@ -15,24 +15,57 @@ public class dark : MonoBehaviour {
     {
 		if (magictag == "Fire")
 		{
-			eneStatus.enemyHP -= damagepoint * 2;
+			if (magictag.Contains("High"))
+			{
+				eneStatus.enemyHP -= damagepoint * 3;
 
-			eneStatus.mess.setmessage("敵に" + (damagepoint * 2) + "ポイントのダメージを与えた！");
-            eneStatus.mess.message.enabled = true;
+				eneStatus.mess.setmessage("敵に" + (damagepoint * 3) + "ポイントのダメージを与えた！");
+				eneStatus.mess.message.enabled = true;
+			}
+			else
+			{
+				eneStatus.enemyHP -= damagepoint * 2;
+
+				eneStatus.mess.setmessage("敵に" + (damagepoint * 2) + "ポイントのダメージを与えた！");
+				eneStatus.mess.message.enabled = true;
+			}
 		}
 		else if (magictag != "Attack")
         {
-			eneStatus.enemyHP -= (int)(damagepoint / 2);
+			if (magictag.Contains("High"))
+			{
+				eneStatus.enemyHP -= (int)(damagepoint * 0.75f);
+			}
+			else
+			{
+				eneStatus.enemyHP -= (int)(damagepoint * 0.5f);
+			}
 
 			if (damagepoint >= 0)
             {
-				eneStatus.mess.setmessage("敵に" + (int)(damagepoint / 2) + "ポイントのダメージを与えた！");
-                eneStatus.mess.message.enabled = true;
+				if (magictag.Contains("High"))
+				{
+					eneStatus.mess.setmessage("敵に" + (int)(damagepoint * 0.75f) + "ポイントのダメージを与えた！");
+					eneStatus.mess.message.enabled = true;
+				}
+				else
+				{
+					eneStatus.mess.setmessage("敵に" + (int)(damagepoint * 0.5f) + "ポイントのダメージを与えた！");
+					eneStatus.mess.message.enabled = true;
+				}
             }
             else
             {
-				eneStatus.mess.setmessage("敵は" + (int)(-damagepoint / 2) + "ポイントのダメージを回復した！");
-                eneStatus.mess.message.enabled = true;
+				if (magictag.Contains("High"))
+				{
+					eneStatus.mess.setmessage("敵は" + -(int)(damagepoint * 0.75f) + "ポイントのダメージを回復した！");
+					eneStatus.mess.message.enabled = true;
+				}
+				else
+				{
+					eneStatus.mess.setmessage("敵は" + -(int)(damagepoint * 0.5f) + "ポイントのダメージを回復した！");
+					eneStatus.mess.message.enabled = true;
+				}
             }
         }
         else

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class FadeScript : MonoBehaviour {
 
 	public float speed = 0.1f;
-	private float alpha;
+	public float alpha { get; set; }
 
 	// Use this for initialization
 	void Start () {
