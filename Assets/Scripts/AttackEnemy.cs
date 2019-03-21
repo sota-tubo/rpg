@@ -77,7 +77,7 @@ public class AttackEnemy : MonoBehaviour {
 			enemyStatus.enedamage(playerstat.magicAttack, magickind);
 			//magiccount.count--;
 
-			enemystat.enedamage(playerstat.magicAttack, magickind);
+			enemyStatus.enedamage(playerstat.magicAttack, magickind);
 		}
 		//まほう(回復魔法)を選択した時
 		else if (playerattack.heal == true)
@@ -101,7 +101,7 @@ public class AttackEnemy : MonoBehaviour {
 				mess.message.enabled = true;
 			}
             
-			enemystat.enedamage(-playerstat.magicHeal, magickind);
+			enemyStatus.enedamage(-playerstat.magicHeal, magickind);
 		}
 
 	}
