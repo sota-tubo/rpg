@@ -37,5 +37,6 @@ public class Magic : MonoBehaviour {
 
 		magicselect = true;
 		attack.attackselect = false;
+
 	}
 }

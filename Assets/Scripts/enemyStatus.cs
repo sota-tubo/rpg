@@ -59,7 +59,7 @@ public class enemyStatus : MonoBehaviour {
 
 		if (GetComponent<gorotuki>() != null)
 		{
-			GetComponent<gorotuki>().damage(attackpoint);
+			GetComponent<gorotuki>().damage(attackpoint, magictag);
 		}
 		else if (GetComponent<jii>() != null)
 		{
@@ -77,8 +77,16 @@ public class enemyStatus : MonoBehaviour {
 		if (enemyHP <= 0)
 		{
 			//SceneManager.LoadScene(scenestr);
-			mess.setmessage("敵を倒した！！");
-            mess.message.enabled = true;
+			if (magictag == "Money")
+			{
+				mess.setmessage("敵を退けた！");
+				mess.message.enabled = true;
+			}
+			else
+			{
+				mess.setmessage("敵を倒した！！");
+				mess.message.enabled = true;
+			}
 
             playerattack.attackselect = false;
 			magic.magicselect = false;
