@@ -75,6 +75,9 @@ public class AttackEnemy : MonoBehaviour {
 			Debug.Log(magickind);
 			magiceffect.changeEffect(magickind);
 			enemyStatus.enedamage(playerstat.magicAttack, magickind);
+			//magiccount.count--;
+
+			enemystat.enedamage(playerstat.magicAttack, magickind);
 		}
 		//まほう(回復魔法)を選択した時
 		else if (playerattack.heal == true)
@@ -97,6 +100,8 @@ public class AttackEnemy : MonoBehaviour {
 				mess.setmessage("敵は興味がないようだ...");
 				mess.message.enabled = true;
 			}
+            
+			enemystat.enedamage(-playerstat.magicHeal, magickind);
 		}
 
 	}

@@ -13,7 +13,7 @@ public class myst : MonoBehaviour {
 
 	public void damage(int damagepoint, string magictag)
     {
-		if (magictag == "Thunder")
+		if (magictag.Contains("Thunder") == true)
 		{
 			if (magictag.Contains("High"))
 			{

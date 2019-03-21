@@ -14,6 +14,10 @@ TagManager:
   - High_Fire
   - High_Water
   - High_Thunder
+  - High_Fire
+  - High_Water
+  - High_Thunder
+  - High_Heal
   layers:
   - Default
   - TransparentFX
