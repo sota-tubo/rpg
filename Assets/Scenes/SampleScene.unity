@@ -3547,6 +3547,7 @@ MonoBehaviour:
   magic: {fileID: 1154611142}
   menu: {fileID: 1791199997}
   mess: {fileID: 170328834}
+  selectPlayer: {fileID: 2097173395}
 --- !u!114 &1434486709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4434,6 +4435,7 @@ MonoBehaviour:
   magic: {fileID: 1154611142}
   menu: {fileID: 1791199997}
   mess: {fileID: 170328834}
+  selectPlayer: {fileID: 0}
 --- !u!114 &1620403206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4681,7 +4683,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1673311970
 RectTransform:
   m_ObjectHideFlags: 0

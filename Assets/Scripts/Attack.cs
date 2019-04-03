@@ -30,14 +30,14 @@ public class Attack : MonoBehaviour {
 
 	private void FixedUpdate()
 	{
-		if(Input.GetMouseButtonDown(1) && attackselect == true && eneStatus.enemyHP > 0)
+		if(Input.GetMouseButtonDown(1) && attackselect && eneStatus.enemyHP > 0)
 		{
 			mess.message.enabled = false;
 			attackselect = false;
 			enemy.attack = false;
 		}
 
-		if (enemy.attack == false)
+		if (!enemy.attack)
 		{
 			playerButton.SetActive(false);
 		}

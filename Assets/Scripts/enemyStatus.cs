@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class enemyStatus : MonoBehaviour {
 
-	public int enemyHP = 50; //敵のHP
+	public int enemyHP = 50; //敵のHP(あくまでも初期HPなだけで上限ではない)
 	public int eneAttack = 10; //敵の攻撃力
     
 	public string scenestr = "GameClear"; //敵を倒した時の遷移先のシーン名
@@ -14,12 +14,12 @@ public class enemyStatus : MonoBehaviour {
 	public Sprite backjii, backmyst; //背景の変更
     
 	public MenuSwitch menu { get; private set; }
-	private playerStatus playerstatus;
 	public Magic magic;
 	public messagetext mess { get; private set; }
 	[SerializeField]
 	private Attack playerattack;
 	private enemyDamageEffect DamageEffect;
+	private playerStatus playerstatus;
 
 	public FadeScript Fade { get; private set; }
 	private GameObject background;
@@ -44,7 +44,7 @@ public class enemyStatus : MonoBehaviour {
 	private void FixedUpdate()
 	{
 		//敵のターンになった時
-		if (menu.playerTurn == false)
+		if (!menu.playerTurn)
 		{
 			playerstatus.damage(eneAttack);
 		}
@@ -88,8 +88,9 @@ public class enemyStatus : MonoBehaviour {
 				mess.message.enabled = true;
 			}
 
-            playerattack.attackselect = false;
-			magic.magicselect = false;
+            playerattack.attackselect = true;
+			magic.magicselect = true;
+			menu.MS = true;
 
 			Fade.fade();
 

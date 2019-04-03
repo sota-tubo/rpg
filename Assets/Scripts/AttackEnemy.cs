@@ -39,12 +39,12 @@ public class AttackEnemy : MonoBehaviour {
 	private void FixedUpdate()
 	{
 		//こうげきが選択された時
-		if (attack == true)
+		if (attack)
 		{
 			enemy.enabled = true;
 		}
         //こうげきの選択がキャンセルされた時もしくは攻撃した後
-		else if (attack == false)
+		else if (!attack)
 		{
 			enemy.enabled = false;
 		}
@@ -58,15 +58,15 @@ public class AttackEnemy : MonoBehaviour {
 	public void EnemyClicked()
 	{
 		//たたかうを選択した時
-		if (playerattack.attackselect == true)
+		if (playerattack.attackselect)
 		{
 			attack = false;
 
-			Debug.Log("Attack");
+			Debug.Log(magickind);
 			enemyStatus.enedamage(playerstat.playerAttack, magickind);
 		}
 		//まほう(攻撃魔法)を選択した時
-		else if (magic.magicselect == true)
+		else if (magic.magicselect)
 		{
 			attack = false;
 
@@ -80,7 +80,7 @@ public class AttackEnemy : MonoBehaviour {
 			enemyStatus.enedamage(playerstat.magicAttack, magickind);
 		}
 		//まほう(回復魔法)を選択した時
-		else if (playerattack.heal == true)
+		else if (playerattack.heal)
 		{
 			attack = false;
 

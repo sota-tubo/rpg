@@ -34,7 +34,7 @@ public class playerStatus : MonoBehaviour {
 	private void FixedUpdate()
 	{
 		/*
-		if (mess.enabled == true && Input.GetMouseButtonDown(0))
+		if (mess.enabled && Input.GetMouseButtonDown(0))
 		{
 			mess.message.enabled = false;
 		}
