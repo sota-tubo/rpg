@@ -8,6 +8,7 @@ public class magicInfo : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		//魔法の回数を特定の回数だけ使えるようにする予定
 		//取得の仕方を考え中
 		if (gameObject.name == "bakuen")
 			highmagic = true;

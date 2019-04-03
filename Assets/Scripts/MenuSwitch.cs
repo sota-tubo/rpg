@@ -35,14 +35,14 @@ public class MenuSwitch : MonoBehaviour {
 	private void FixedUpdate()
 	{
 		//メニュー表示
-		if (MS == true)
+		if (MS)
 		{
 			menu.SetActive(true);
 			item.SetActive(true);
 			visMenu();
 		}
         //メニュー非表示
-		else if (MS == false)
+		else if (!MS)
 		{
 			menu.SetActive(false);
 			item.SetActive(false);

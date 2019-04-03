@@ -41,7 +41,7 @@ public class myst : MonoBehaviour {
             }
             else
             {
-                eneStatus.mess.setmessage("敵は" + damagepoint + "ポイントのダメージを回復した！");
+                eneStatus.mess.setmessage("敵は" + -damagepoint + "ポイントのダメージを回復した！");
                 eneStatus.mess.message.enabled = true;
             }
 		}

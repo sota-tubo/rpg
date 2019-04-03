@@ -15,21 +15,19 @@ public class gorotuki : MonoBehaviour {
 	{
 		if (magictag.Contains("High"))
 		{
-			eneStatus.enemyHP -= (int)(damagepoint * 1.5f);
+			damagepoint = (int)(damagepoint * 1.5f);
 		}
-		else
-		{
-			eneStatus.enemyHP -= damagepoint;
-		}
+
+		eneStatus.enemyHP -= damagepoint;
 
 		if (damagepoint >= 0)
 		{
-			eneStatus.mess.setmessage("敵に" + (int)(damagepoint * 1.5f) + "ポイントのダメージを与えた！");
+			eneStatus.mess.setmessage("敵に" + damagepoint + "ポイントのダメージを与えた！");
 			eneStatus.mess.message.enabled = true;
 		}
 		else
 		{
-			eneStatus.mess.setmessage("敵は" + (int)(damagepoint * 1.5f) + "ポイントのダメージを回復した！");
+			eneStatus.mess.setmessage("敵は" + -damagepoint + "ポイントのダメージを回復した！");
 			eneStatus.mess.message.enabled = true;
         }
 	}
