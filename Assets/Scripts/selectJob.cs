@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class selectJob : MonoBehaviour {
 
-	public static bool Sol, Kni, Ber, Wiz, Sag, Dar, Yuu;
+	public static bool Sol, Kni, Ber, Wiz, Sag, Dar, Yuu, Sch;
 	public static bool Yuusyaflag = false;
 
 	private messagetext mess;
@@ -20,11 +20,12 @@ public class selectJob : MonoBehaviour {
 		Wiz = false;
 		Sag = false;
 		Dar = false;
+		Sch = false;
 
 		mess = GameObject.Find("messagetext").GetComponent<messagetext>();
 		Yuusya = GameObject.Find("Yuusya");
 
-		if (Yuusyaflag == false)
+		if (!Yuusyaflag)
 		{
 			Yuusya.SetActive(false);
 		}
@@ -116,4 +117,15 @@ public class selectJob : MonoBehaviour {
 		Yuu = true;
 		SceneManager.LoadScene("SampleScene");
 	}
+
+	public void pointerScholar()
+    {
+        mess.setmessage("敵を混乱させる特技を使えることができる\n攻撃と一部の魔法が使えるが攻撃力は低い");
+    }
+
+    public void selectScholar()
+    {
+		Sch = true;
+        SceneManager.LoadScene("SampleScene");
+    }
 }

@@ -57,6 +57,19 @@ public class enemyStatus : MonoBehaviour {
 		if (magictag.Contains("High") == true)
 			attackpoint *= 2;
 
+		if (magictag == "confuse")
+		{
+			if (GetComponent<dark>() != null)
+			{
+				mess.setmessage("効果がなかった！");
+                mess.message.enabled = true;
+			}
+			else
+			{
+				//スキルの処理を考え中
+			}
+		}
+
 		if (GetComponent<gorotuki>() != null)
 		{
 			GetComponent<gorotuki>().damage(attackpoint, magictag);

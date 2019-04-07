@@ -57,12 +57,12 @@ public class AttackEnemy : MonoBehaviour {
     //攻撃時に敵をクリックした時。選択した敵にダメージ処理を行う
 	public void EnemyClicked()
 	{
+		Debug.Log(magickind);
 		//たたかうを選択した時
 		if (playerattack.attackselect)
 		{
 			attack = false;
-
-			Debug.Log(magickind);
+            
 			enemyStatus.enedamage(playerstat.playerAttack, magickind);
 		}
 		//まほう(攻撃魔法)を選択した時
@@ -72,11 +72,7 @@ public class AttackEnemy : MonoBehaviour {
 
 			//magiccount.count--;
 
-			Debug.Log(magickind);
 			magiceffect.changeEffect(magickind);
-			enemyStatus.enedamage(playerstat.magicAttack, magickind);
-			//magiccount.count--;
-
 			enemyStatus.enedamage(playerstat.magicAttack, magickind);
 		}
 		//まほう(回復魔法)を選択した時
@@ -85,24 +81,30 @@ public class AttackEnemy : MonoBehaviour {
 			attack = false;
 
 			//magiccount.count--;
-			Debug.Log(magickind);
 			enemyStatus.enedamage(-playerstat.magicHeal, magickind);
 		}
 		//アイテム(お金を選択した場合)
 		else if (magickind == "Money")
 		{
+			//ごろつきに使用した場合倒すことができる
 			if (GetComponent<gorotuki>())
 			{
-				enemyStatus.enedamage(50, magickind); //ごろつきの体力は50なので、
+				enemyStatus.enedamage(1000, magickind);
 			}
 			else
 			{
 				mess.setmessage("敵は興味がないようだ...");
 				mess.message.enabled = true;
 			}
-            
+
 			enemyStatus.enedamage(-playerstat.magicHeal, magickind);
 		}
+		//特技を選択した時
+		else if (playerattack.skillselect)
+		{
+			attack = false;
 
+			enemyStatus.enedamage(playerstat.magicAttack, magickind);
+		}
 	}
 }
