@@ -20,7 +20,12 @@ public class gorotuki : MonoBehaviour {
 
 		eneStatus.enemyHP -= damagepoint;
 
-		if (damagepoint >= 0)
+		if (magictag == "Money")
+        {
+            eneStatus.mess.setmessage("「ラッキー」");
+            eneStatus.mess.message.enabled = true;
+        }
+		else if (damagepoint >= 0)
 		{
 			eneStatus.mess.setmessage("敵に" + damagepoint + "ポイントのダメージを与えた！");
 			eneStatus.mess.message.enabled = true;

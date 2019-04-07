@@ -6,6 +6,7 @@ public class Attack : MonoBehaviour {
 
 	public bool attackselect { get; set; } //たたかうが選択されたかどうか
 	public bool heal { get; set; } //回復のまほうを選択した時
+	public bool skillselect { get; set; } //特技を選択した時
 	public GameObject playerButton; //回復時のプレイヤーを表示するためのボタン
 
 	[SerializeField]
@@ -21,6 +22,7 @@ public class Attack : MonoBehaviour {
 	void Start () {
 		attackselect = false;
 		heal = false;
+		skillselect = false;
 	}
 	
 	// Update is called once per frame
@@ -84,5 +86,16 @@ public class Attack : MonoBehaviour {
 		mess.message.enabled = true;
 
 		enemy.attack = true;
+	}
+
+    //特技選択時
+	public void skillSelected()
+	{
+		skillselect = true;
+
+		mess.setmessage("どの敵に使う？");
+        mess.message.enabled = true;
+
+        enemy.attack = true;
 	}
 }

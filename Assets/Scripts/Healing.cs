@@ -36,10 +36,10 @@ public class Healing : MonoBehaviour {
 		//mess.setmessage("誰を回復する？");
 		//mess.message.enabled = true;
 
-		//player.heal(player.magicHeal);
+		player.heal(player.magicHeal);
 
 		magic.magicselect = false;
 		menu.MS = false;
-		selectPlayer.SetActive(true);
+		selectPlayer.SetActive(false);
 	}
 }

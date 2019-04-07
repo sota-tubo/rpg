@@ -18,6 +18,7 @@ TagManager:
   - High_Water
   - High_Thunder
   - High_Heal
+  - confuse
   layers:
   - Default
   - TransparentFX

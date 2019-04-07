@@ -1,19 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuSwitch : MonoBehaviour {
 
 	public bool MS { get; set; } //メニューの表示非表示切り替え
 	public bool playerTurn { get; set; } //プレイヤーのターンかどうか
 	[SerializeField]
-	private GameObject menu, attack, magic, item; //メニュー関連全般
+	private GameObject menu, attack, magic, item, skill; //メニュー関連全般
 	[SerializeField]
 	private GameObject magframe, itemframe; //魔法・アイテムの種類を表示させる枠
 	[SerializeField]
 	private enemyStatus enemy;
 	[SerializeField]
 	private GameObject HighMagic; //上位魔法が格納されているオブジェクト
+	[SerializeField]
+	private Text skilltext; //skillオブジェクトのテキスト
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +27,12 @@ public class MenuSwitch : MonoBehaviour {
 		if (selectJob.Sag || selectJob.Dar || selectJob.Yuu)
 		{
 			HighMagic.SetActive(true);
+		}
+
+        //学者の場合
+		if (selectJob.Sch)
+		{
+			skillkind();
 		}
 	}
 	
@@ -59,8 +68,15 @@ public class MenuSwitch : MonoBehaviour {
 
 	private void visMenu()
 	{
+		//学者の場合
+		if (selectJob.Sch)
+		{
+			attack.SetActive(true);
+			magic.SetActive(true);
+			skill.SetActive(true);
+		}
 		//戦士or魔法使いor闇の戦士or伝説の勇者の場合
-		if (selectJob.Sol || selectJob.Wiz || selectJob.Dar || selectJob.Yuu)
+		else if (selectJob.Sol || selectJob.Wiz || selectJob.Dar || selectJob.Yuu)
 		{
             attack.SetActive(true);
             magic.SetActive(true);
@@ -79,8 +95,15 @@ public class MenuSwitch : MonoBehaviour {
 
 	private void invisMenu()
 	{
+		//学者の場合
+        if (selectJob.Sch)
+        {
+			attack.SetActive(false);
+			magic.SetActive(false);
+			skill.SetActive(false);
+        }
 		//戦士or魔法使いor闇の戦士or伝説の勇者の場合
-        if (selectJob.Sol || selectJob.Wiz || selectJob.Dar || selectJob.Yuu)
+        else if (selectJob.Sol || selectJob.Wiz || selectJob.Dar || selectJob.Yuu)
         {
 			attack.SetActive(false);
 			magic.SetActive(false);
@@ -95,5 +118,15 @@ public class MenuSwitch : MonoBehaviour {
         {
 			magic.SetActive(false);
         }
+	}
+
+	private void skillkind()
+	{
+		//学者の場合
+		if (selectJob.Sch)
+		{
+			skill.tag = "confuse";
+			skilltext.text = "こうしき";
+		}
 	}
 }

@@ -6,10 +6,12 @@ using UnityEngine.UI;
 public class jii : MonoBehaviour {
 
 	private enemyStatus eneStatus;
+	private AttackEnemy attackEnemy;
 
 	private void Start()
 	{
 		eneStatus = GetComponent<enemyStatus>();
+		attackEnemy = GetComponent<AttackEnemy>();
 	}
 
 	//ダメージを受けた時
@@ -17,10 +19,12 @@ public class jii : MonoBehaviour {
     {
 		if (damagepoint <= 0f)
         {
-			eneStatus.Fade.fade();
-			GetComponent<Image>().sprite = eneStatus.jiismile;
-			eneStatus.enemyHP = 0;
-			//Invoke("smile", 2.0f);
+			if (attackEnemy.magickind != "Money")
+			{
+				eneStatus.Fade.fade();
+				GetComponent<Image>().sprite = eneStatus.jiismile;
+				eneStatus.enemyHP = 0;
+			}
         }
         else
         {
