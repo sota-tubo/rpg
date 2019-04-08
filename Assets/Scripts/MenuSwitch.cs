@@ -4,19 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class MenuSwitch : MonoBehaviour {
+	//メニューの表示非表示を制御するスクリプト
 
 	public bool MS { get; set; } //メニューの表示非表示切り替え
 	public bool playerTurn { get; set; } //プレイヤーのターンかどうか
 	[SerializeField]
-	private GameObject menu, attack, magic, item, skill; //メニュー関連全般
+	private GameObject menu = null, attack = null, magic = null, item = null, skill = null; //メニュー関連全般
 	[SerializeField]
-	private GameObject magframe, itemframe; //魔法・アイテムの種類を表示させる枠
+	private GameObject magframe = null, itemframe = null; //魔法・アイテムの種類を表示させる枠
 	[SerializeField]
-	private enemyStatus enemy;
+	private GameObject HighMagic = null; //上位魔法が格納されているオブジェクト
 	[SerializeField]
-	private GameObject HighMagic; //上位魔法が格納されているオブジェクト
-	[SerializeField]
-	private Text skilltext; //skillオブジェクトのテキスト
+	private Text skilltext = null; //skillオブジェクトのテキスト
 
 	// Use this for initialization
 	void Start () {

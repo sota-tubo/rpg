@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GetTag : MonoBehaviour {
+	//どのコマンド、魔法、アイテムを使用したのか判別させるためにタグを取得するためのスクリプト
 
-	private AttackEnemy attackenemy;
+	private AttackEnemy attackenemy; //タグ名を格納させるための変数の呼び出し
 
 	// Use this for initialization
 	void Start () {

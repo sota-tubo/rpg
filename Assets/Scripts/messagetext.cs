@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class messagetext : MonoBehaviour {
+	//上部に表示されるメッセージの内容を指定した文字列に変更するスクリプト
 
 	public Text message { get; set; } //メッセージテキスト
 

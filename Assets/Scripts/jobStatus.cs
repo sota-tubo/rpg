@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class jobStatus : MonoBehaviour {
+	//どの職業を選んだのか判定するためのスクリプト
 
-	private playerStatus status;
+	private playerStatus status; //職業によってプレイヤーのステータスを変化
 
 	private void Awake()
 	{

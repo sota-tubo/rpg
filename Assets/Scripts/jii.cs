@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class jii : MonoBehaviour {
+	//おじいさん(現段階で2番目の敵)のダメージ処理をするためのスクリプト
 
-	private enemyStatus eneStatus;
-	private AttackEnemy attackEnemy;
+	private enemyStatus eneStatus; //敵の体力を参照
+	private AttackEnemy attackEnemy; //タグでコマンドを判定
 
 	private void Start()
 	{
@@ -17,8 +18,10 @@ public class jii : MonoBehaviour {
 	//ダメージを受けた時
 	public void damage(int damagepoint)
     {
+		//敵を回復した場合
 		if (damagepoint <= 0f)
         {
+			//コマンドのタグがお金以外の場合
 			if (attackEnemy.magickind != "Money")
 			{
 				eneStatus.Fade.fade();
@@ -26,6 +29,7 @@ public class jii : MonoBehaviour {
 				eneStatus.enemyHP = 0;
 			}
         }
+        //敵を攻撃した場合
         else
         {
 			eneStatus.mess.setmessage("危ないっ！");
@@ -38,10 +42,4 @@ public class jii : MonoBehaviour {
 			eneStatus.eneAttack = 10000;
         }
     }
-
-	void smile()
-	{
-		eneStatus.enemyHP = -1;
-	}
-
 }

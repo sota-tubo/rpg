@@ -2129,6 +2129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemFrame: {fileID: 2017823967}
   attack: {fileID: 1467536204}
+  magic: {fileID: 1154611142}
 --- !u!1 &883763457
 GameObject:
   m_ObjectHideFlags: 0
@@ -2864,6 +2865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magicFrame: {fileID: 621400679}
   attack: {fileID: 1467536204}
+  item: {fileID: 869988637}
 --- !u!1 &1166273983
 GameObject:
   m_ObjectHideFlags: 0
@@ -3692,7 +3694,6 @@ MonoBehaviour:
   at: {fileID: 1493484619}
   magic: {fileID: 1154611142}
   menu: {fileID: 1791199997}
-  mess: {fileID: 170328834}
   selectPlayer: {fileID: 2097173395}
 --- !u!114 &1434486709
 MonoBehaviour:
@@ -3953,7 +3954,6 @@ MonoBehaviour:
   enemy: {fileID: 1493484619}
   mess: {fileID: 170328834}
   magic: {fileID: 1154611142}
-  eneStatus: {fileID: 1493484623}
 --- !u!114 &1467536205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4657,7 +4657,6 @@ MonoBehaviour:
   at: {fileID: 1493484619}
   magic: {fileID: 1154611142}
   menu: {fileID: 1791199997}
-  mess: {fileID: 170328834}
   selectPlayer: {fileID: 0}
 --- !u!114 &1620403206
 MonoBehaviour:
@@ -5200,7 +5199,6 @@ MonoBehaviour:
   skill: {fileID: 0}
   magframe: {fileID: 621400679}
   itemframe: {fileID: 2017823967}
-  enemy: {fileID: 1493484623}
   HighMagic: {fileID: 29538869}
   skilltext: {fileID: 0}
 --- !u!4 &1791199998

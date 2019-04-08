@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class FadeScript : MonoBehaviour {
+	//フェードアウトを実行させるスクリプト
 
-	public float speed = 0.1f;
-	public float alpha { get; set; }
+	public float speed = 0.1f; //フェードアウトする時の速さ
+	public float alpha { get; set; } //α値(透明度)
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +19,7 @@ public class FadeScript : MonoBehaviour {
 		
 	}
 
+    //フェードアウトを実行させるための関数
 	public void fade()
 	{
 		alpha = 1f;
@@ -25,6 +27,7 @@ public class FadeScript : MonoBehaviour {
 		StartCoroutine("Fadeout");
 	}
 
+    //フェードアウトさせる
 	IEnumerator Fadeout()
 	{
 		GetComponent<Image>().color = new Color(255f, 255f, 255f, alpha);

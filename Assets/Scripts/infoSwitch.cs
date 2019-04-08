@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class infoSwitch : MonoBehaviour {
+	//魔法の情報を表示させるスクリプト(実装予定)
 
-	private GameObject infoCanvas;
+	private GameObject infoCanvas; //魔法の情報を表示させるオブジェクト
 
 	// Use this for initialization
 	void Start () {

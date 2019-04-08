@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Start : MonoBehaviour {
+	//ゲームスタートさせるためのスクリプト
 	
 	// Update is called once per frame
 	void Update () {

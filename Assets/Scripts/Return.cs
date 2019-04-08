@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Return : MonoBehaviour {
+	//タイトル画面に戻る時のスクリプト
 
 	// Use this for initialization
 	void Start () {

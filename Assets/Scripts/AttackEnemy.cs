@@ -4,24 +4,25 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class AttackEnemy : MonoBehaviour {
+	//敵を選択した時に処理を行うスクリプト
 
 	public bool attack { get; set; } //攻撃が選択された時
 	//public magicCount magiccount { get; set; } //どの魔法が使われたのかをチェック
 	public string magickind { get; set; } //使う魔法・アイテムの種類
-    
-	[SerializeField]
-	private playerStatus playerstat;
-	[SerializeField]
-	private messagetext mess;
-	[SerializeField]
-	private Attack playerattack;
-	[SerializeField]
-	private Magic magic;
 
-	private enemyStatus enemyStatus;
-	private magicEffect magiceffect;
+	[SerializeField]
+	private playerStatus playerstat; //プレイヤーの攻撃力、魔力、回復力を参照するため
+	[SerializeField]
+	private messagetext mess; //上部メッセージ内容を変更するため
+	[SerializeField]
+	private Attack playerattack; //どのコマンドが選択されたのかを確認するため
+	[SerializeField]
+	private Magic magic; //魔法が選択されたかどうかを確認するため
 
-	private Button enemy;
+	private enemyStatus enemyStatus; //ダメージ処理を実行できるようにするため
+	private magicEffect magiceffect; //魔法のエフェクトを実行できるようにする
+
+	private Button enemy; //敵を選択できるようにするため
 
 	// Use this for initialization
 	void Start () {
@@ -57,7 +58,6 @@ public class AttackEnemy : MonoBehaviour {
     //攻撃時に敵をクリックした時。選択した敵にダメージ処理を行う
 	public void EnemyClicked()
 	{
-		Debug.Log(magickind);
 		//たたかうを選択した時
 		if (playerattack.attackselect)
 		{

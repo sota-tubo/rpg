@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class magicEffect : MonoBehaviour {
+	//魔法のエフェクトを表示させるスクリプト
 
-	private FadeScript Fade;
+	private FadeScript Fade; //フェードアウト時にエフェクト非表示
 
 	// Use this for initialization
 	void Start () {
@@ -16,6 +17,7 @@ public class magicEffect : MonoBehaviour {
 		
 	}
 
+    //発動した魔法によって魔法のエフェクトが変化
 	public void changeEffect(string magickind)
 	{
 		//火の魔法の場合
@@ -76,6 +78,7 @@ public class magicEffect : MonoBehaviour {
         
 	}
 
+    //魔法のエフェクト表示
 	private IEnumerator Effect(GameObject effect1, GameObject effect2)
 	{
 		effect1.SetActive(true);

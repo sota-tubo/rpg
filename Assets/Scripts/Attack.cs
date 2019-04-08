@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Attack : MonoBehaviour {
+	//どのコマンドを選択したのか判定する、敵を選択できるようにするためのスクリプト
 
 	public bool attackselect { get; set; } //たたかうが選択されたかどうか
 	public bool heal { get; set; } //回復のまほうを選択した時
@@ -10,13 +11,13 @@ public class Attack : MonoBehaviour {
 	public GameObject playerButton; //回復時のプレイヤーを表示するためのボタン
 
 	[SerializeField]
-	private AttackEnemy enemy;
+	private AttackEnemy enemy; //敵を選択できるようにするため
 	[SerializeField]
-	private messagetext mess;
+	private messagetext mess; //上部メッセージ内容を変更するため
 	[SerializeField]
-	private Magic magic;
-	[SerializeField]
-	private enemyStatus eneStatus;
+	private Magic magic; //攻撃魔法が選択されたかどうか
+	//[SerializeField]
+	//private enemyStatus eneStatus; //敵の体力を参照するため
 
 	// Use this for initialization
 	void Start () {
@@ -32,12 +33,14 @@ public class Attack : MonoBehaviour {
 
 	private void FixedUpdate()
 	{
+		/*
 		if(Input.GetMouseButtonDown(1) && attackselect && eneStatus.enemyHP > 0)
 		{
 			mess.message.enabled = false;
 			attackselect = false;
 			enemy.attack = false;
 		}
+		*/
 
 		if (!enemy.attack)
 		{

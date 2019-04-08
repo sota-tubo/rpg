@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Quit : MonoBehaviour {
+	//ゲーム終了する際のスクリプト
 
 	// Use this for initialization
 	void Start () {

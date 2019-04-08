@@ -4,10 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class damageEffect : MonoBehaviour {
-
-	//public float speed = 0.3f;
-	private float alpha;
-	//private bool isEffect;
+	//プレイヤーがダメージを受けた時のエフェクトを表示させるためのスクリプト
+    
+	private float alpha; //α値(透明度)
 
 	// Use this for initialization
 	void Start () {
@@ -19,19 +18,17 @@ public class damageEffect : MonoBehaviour {
 		
 	}
 
+    //ダメージエフェクトの処理をするための関数
 	public void playereffect()
 	{
-		//isEffect = true;
 		alpha = 0.4f;
-		//GetComponent<Image>().enabled = true;
 		StartCoroutine("DE");
 	}
 
+    //ダメージエフェクト表示
 	IEnumerator DE()
 	{
-        //Debug.Log(isEffect);
 		GetComponent<Image>().color = new Color(255f, 0f, 0f, alpha);
-		//alpha += speed;
 
 		GetComponent<Image>().enabled = true;
 
@@ -46,31 +43,5 @@ public class damageEffect : MonoBehaviour {
         yield return new WaitForSeconds(0.05f);
 
         GetComponent<Image>().enabled = false;
-        /*
-
-		if (alpha <= 0f)
-		{
-			GetComponent<Image>().enabled = false;
-		}
-		else if (alpha >= 0.5f)
-		{
-			isEffect = false;
-			alpha -= speed;
-			StartCoroutine("DE");
-		}
-		else
-		{
-			if (isEffect == false)
-			{
-				alpha -= speed;
-				StartCoroutine("DE");
-			}
-			else
-			{
-				alpha += speed;
-				StartCoroutine("DE");
-			}
-		}
-		*/
 	}
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ChangeReso : MonoBehaviour {
+	//ゲームの解像度を固定するスクリプト
 
 	private void Awake()
 	{

@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Healing : MonoBehaviour {
+	//プレイヤーの回復処理を行うためのスクリプト
 
 	[SerializeField]
-	private playerStatus player;
+	private playerStatus player = null; //プレイヤーの回復処理を行うため
 	[SerializeField]
-	private AttackEnemy at;
+	private AttackEnemy at = null; //プレイヤーが回復を実行した時に他の行動をできないようにするため
 	[SerializeField]
-	private Magic magic;
+	private Magic magic = null;
 	[SerializeField]
-	private MenuSwitch menu;
+	private MenuSwitch menu = null; //魔法が選択されたかどうかを確認するため
 	[SerializeField]
-	private messagetext mess;
-	[SerializeField]
-	private GameObject selectPlayer;
+	private GameObject selectPlayer = null; //プレイヤーを選択できるようにする
 
 	// Use this for initialization
 	void Start () {
@@ -30,11 +29,6 @@ public class Healing : MonoBehaviour {
 	public void clickHeal()
 	{
 		at.attack = false;
-        
-        //敵も回復できるようにする
-
-		//mess.setmessage("誰を回復する？");
-		//mess.message.enabled = true;
 
 		player.heal(player.magicHeal);
 

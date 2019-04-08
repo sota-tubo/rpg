@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class enemyDamageEffect : MonoBehaviour {
+	//敵にダメージを与えた時のエフェクトを表示するためのスクリプト
 
 	// Use this for initialization
 	void Start () {
@@ -14,12 +15,12 @@ public class enemyDamageEffect : MonoBehaviour {
 	void Update () {
 		
 	}
-
+    //敵を選択した時にダメージエフェクトを表示させる関数
 	public void effectOn()
 	{
 		StartCoroutine("enemyEffect");
 	}
-
+    //ダメージエフェクト表示
 	public IEnumerator enemyEffect()
 	{
 		Image enemy = GetComponent<Image>();
