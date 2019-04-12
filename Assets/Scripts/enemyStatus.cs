@@ -25,6 +25,9 @@ public class enemyStatus : MonoBehaviour {
 	public FadeScript Fade { get; private set; } //フェードインさせるため
 	private GameObject background; //背景のオブジェクト
 
+	private int confuturn; //混乱をかけられて何ターン目か(学者を使用時)
+	private string checktag = null; //何の特技が発動したかのタグチェック
+
 	// Use this for initialization
 	void Start () {
 		menu = GameObject.Find("GameSystem").GetComponent<MenuSwitch>();
@@ -47,7 +50,33 @@ public class enemyStatus : MonoBehaviour {
 		//敵のターンになった時
 		if (!menu.playerTurn)
 		{
-			playerstatus.damage(eneAttack);
+			//混乱中の敵の行動
+			if (checktag == "confuse" || confuturn > 0)
+			{
+				confuturn++;
+				//(掛けたターンを含め)3ターン経ったら混乱解除
+				if (confuturn == 3)
+				{
+					mess.setmessage("敵の混乱が解けた！");
+					mess.message.enabled = true;
+
+					confuturn = 0;
+				}
+				else
+				{
+					mess.setmessage("敵は混乱している！！");
+					mess.message.enabled = true;
+				}
+
+				menu.playerTurn = true;
+				playerattack.attackselect = true;
+                magic.magicselect = true;
+                menu.MS = true;
+			}
+			else
+			{
+				playerstatus.damage(eneAttack);
+			}
 		}
 	}
     //敵のダメージ処理
@@ -66,8 +95,14 @@ public class enemyStatus : MonoBehaviour {
 			}
 			else
 			{
-				//スキルの処理を考え中
+				mess.setmessage("敵は混乱した！");
+				mess.message.enabled = true;
+
+                //混乱を掛け直したらターンカウントリセット
+				confuturn = 0;
+				checktag = magictag;
 			}
+			return;
 		}
 
         //敵のダメージ処理
@@ -95,6 +130,7 @@ public class enemyStatus : MonoBehaviour {
         //敵の体力が0になった時
 		if (enemyHP <= 0)
 		{
+			confuturn = 0;
 			//SceneManager.LoadScene(scenestr);
             //お金を使って敵を倒した場合
 			if (magictag == "Money")

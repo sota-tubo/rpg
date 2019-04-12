@@ -5196,11 +5196,11 @@ MonoBehaviour:
   attack: {fileID: 1467536199}
   magic: {fileID: 1154611137}
   item: {fileID: 869988632}
-  skill: {fileID: 0}
+  skill: {fileID: 905346469}
   magframe: {fileID: 621400679}
   itemframe: {fileID: 2017823967}
   HighMagic: {fileID: 29538869}
-  skilltext: {fileID: 0}
+  skilltext: {fileID: 1503694583}
 --- !u!4 &1791199998
 Transform:
   m_ObjectHideFlags: 0
